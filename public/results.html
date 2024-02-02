@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            position: relative;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 30px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+            cursor: pointer;
+        }
+        .back-button {
+            position: absolute;
+            right: 10px; /* 右端からの距離 */
+            bottom: 10px; /* 下端からの距離 */
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+        .button-container {
+            position: absolute;
+            right: 70px; /* 右端からの距離 */
+            bottom: -50px; /* 下端からの距離 */
+        }
+
+        .button-container button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px; /* ボタン間の距離 */
+            transition: background-color 0.3s;
+        }
+
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="results-container" style="position: relative;">
+                                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <!-- DynamicContentStart -->
+                    <div class="container">
+                        <h1>シフト検索結果</h1>
+                        <table><table><tr><th>日付</th><th>出勤時間</th><th>退勤時間</th><th>勤務時間</th><th>休憩時間</th></tr><tr><td>2024/02/03(Sat)</td><td>09:15</td><td>22:30</td><td>11:45</td><td>1:30</td></tr><tr><td>2024/02/04(Sun)</td><td>09:45</td><td>22:30</td><td>11:15</td><td>1:30</td></tr><tr><td>2024/02/10(Sat)</td><td>09:15</td><td>21:30</td><td>10:45</td><td>1:30</td></tr></table></table>
+                    </div>
+                    <!-- DynamicContentEnd -->
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            
+                <div class="button-container">
+                    <button onclick="saveToCalendar()">カレンダーに保存</button>
+                    <button onclick="history.back()">戻る</button>
+                </div>        <script>
+            function saveToCalendar() {
+                fetch('/saveToCalendar', {
+                    method: 'POST'
+                })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                })
+                .catch(error => {
+                    console.error('Error saving events to calendar: ', error);
+                });
+            }
+        </script>
+    </div>
+
+</body>
+</html>

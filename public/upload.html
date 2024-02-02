@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>シフトファイルアップロード</title>
+    <style>
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .upload-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        .submit-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <h1>ファイルアップロード</h1>
+        <p>こちらのページからシフトファイルをアップロードしてください。</p>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="file" name="file" id="file" required>
+            </div>
+            <button type="submit" class="submit-button">アップロード</button>
+            <button onclick="location.href='form.html'" class="submit-button">戻る</button>
+            <div id="uploadStatus"></div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // フォームのデフォルトの送信を防止
+    
+            var formData = new FormData(this);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/upload', true);
+    
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // アップロード成功のアラートを表示
+                    alert('アップロードが完了しました。');
+                    // アップロード成功時にform.htmlにリダイレクト
+                    window.location.href = 'form.html';
+                } else {
+                    // エラー処理（必要に応じて）
+                    alert('アップロードに失敗しました。');
+                }
+            };
+    
+            xhr.send(formData);
+        });
+    </script>
+    
+    
+</body>
+</html>
